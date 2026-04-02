@@ -19,10 +19,12 @@ use App\Http\Controllers\PengajuanKreditController;
 //     return view('welcome');
 // });
 
+
 // Route ke halaman home (tampilan untuk Pelanggan) FE
-Route::get('/', [HomeController::class, 'index'])->name('fe.home.index');
-// Route::get('/home', [HomeController::class, 'home'])->name('fe.home.index');
-// Route::resource('/home', [HomeController::class, 'home'])->name('fe.home.index');
+Route::middleware(['auth', 'role:customer'])->group(function () {
+	Route::get('/', [HomeController::class, 'index'])->name('fe.home.index');
+	// Tambahkan route customer lain di sini jika ada
+});
 
 // Route ke halaman login dan register (tampilan untuk Pelanggan)
 Route::get('/login', [LoginController::class, 'login'])->name('login');
@@ -35,20 +37,26 @@ Route::post('/register', [AuthController::class, 'register.create_account'])->na
 
 
 
+
 // Route ke halaman dashboard (tampilan untuk Admin) BE
-Route::get('/admin', [AdminController::class, 'index'])->name('be.admin.index');
-Route::get('/admin/users', [UserbeController::class, 'index'])->name('be.admin.users');
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+	Route::get('/', [AdminController::class, 'index'])->name('be.admin.index');
+	Route::get('/users', [UserbeController::class, 'index'])->name('be.admin.users');
+	Route::get('/jenismotor', [JenisMotorController::class, 'index'])->name('be.admin.jenismotor');
+	Route::get('/motor', [MotorController::class, 'index'])->name('be.admin.motor');
+	Route::get('/pelanggan', [PelangganController::class, 'index'])->name('be.admin.pelanggan');
+	Route::get('/metodebayar', [MetodeBayarController::class, 'index'])->name('be.admin.metodebayar');
+	Route::get('/pengajuankredit', [PengajuanKreditController::class, 'index'])->name('be.admin.pengajuankredit');
+	Route::get('/pengajuankredit/create', [PengajuanKreditController::class, 'create'])->name('be.admin.pengajuankredit.create');
+	Route::post('/pengajuankredit', [PengajuanKreditController::class, 'store'])->name('be.admin.pengajuankredit.store');
+	Route::get('/pengajuankredit/{id}/edit', [PengajuanKreditController::class, 'edit'])->name('be.admin.pengajuankredit.edit');
+	Route::put('/pengajuankredit/{id}', [PengajuanKreditController::class, 'update'])->name('be.admin.pengajuankredit.update');
+	Route::delete('/pengajuankredit/{id}', [PengajuanKreditController::class, 'destroy'])->name('be.admin.pengajuankredit.destroy');
 
-Route::get('/admin/jenismotor', [JenisMotorController::class, 'index'])->name('be.admin.jenismotor');
-Route::get('/admin/motor', [MotorController::class, 'index'])->name('be.admin.motor');
-
-Route::get('/admin/pelanggan', [PelangganController::class, 'index'])->name('be.admin.pelanggan');
-
-Route::get('/admin/metodebayar', [MetodeBayarController::class, 'index'])->name('be.admin.metodebayar');
-
-Route::get('/admin/pengajuankredit', [PengajuanKreditController::class, 'index'])->name('be.admin.pengajuankredit');
-Route::get('/admin/pengajuankredit/create', [PengajuanKreditController::class, 'create'])->name('be.admin.pengajuankredit.create');
-Route::post('/admin/pengajuankredit', [PengajuanKreditController::class, 'store'])->name('be.admin.pengajuankredit.store');
-Route::get('/admin/pengajuankredit/{id}/edit', [PengajuanKreditController::class, 'edit'])->name('be.admin.pengajuankredit.edit');
-Route::put('/admin/pengajuankredit/{id}', [PengajuanKreditController::class, 'update'])->name('be.admin.pengajuankredit.update');
-Route::delete('/admin/pengajuankredit/{id}', [PengajuanKreditController::class, 'destroy'])->name('be.admin.pengajuankredit.destroy');
+	// Resource CRUD routes
+	Route::resource('angsuran', App\Http\Controllers\AngsuranController::class);
+	Route::resource('asuransi', App\Http\Controllers\AsuransiController::class);
+	Route::resource('pengiriman', App\Http\Controllers\PengirimanController::class);
+	Route::resource('jeniscicilan', App\Http\Controllers\JenisCicilanController::class);
+	Route::resource('user', App\Http\Controllers\UserController::class);
+});
