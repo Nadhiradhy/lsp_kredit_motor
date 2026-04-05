@@ -9,8 +9,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('be.admin.index', [
-            'title' => 'Admin',
+        return view('be.dashboard.index', [
+            'title' => 'Dashboard',
         ]);
     }
 }
