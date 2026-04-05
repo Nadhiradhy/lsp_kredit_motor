@@ -12,7 +12,11 @@ class JenisCicilanController extends Controller
      */
     public function index()
     {
-        //
+        $data = \App\Models\JenisCicilan::orderBy('lama_cicilan')->get();
+        return view('be.pages.jeniscicilan.index', [
+            'title' => 'Jenis Cicilan',
+            'data' => $data
+        ]);
     }
 
     /**
@@ -28,7 +32,12 @@ class JenisCicilanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'lama_cicilan' => 'required|integer|min:1',
+            'margin_kredit' => 'required|numeric|min:0',
+        ]);
+        \App\Models\JenisCicilan::create($validated);
+        return redirect()->route('jeniscicilan.index')->with('success', 'Jenis cicilan berhasil ditambahkan!');
     }
 
     /**
@@ -44,7 +53,13 @@ class JenisCicilanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cicilan = \App\Models\JenisCicilan::findOrFail($id);
+        $data = \App\Models\JenisCicilan::orderBy('lama_cicilan')->get();
+        return view('be.pages.jeniscicilan', [
+            'title' => 'Edit Jenis Cicilan',
+            'cicilan' => $cicilan,
+            'data' => $data
+        ]);
     }
 
     /**
@@ -52,7 +67,13 @@ class JenisCicilanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $cicilan = \App\Models\JenisCicilan::findOrFail($id);
+        $validated = $request->validate([
+            'lama_cicilan' => 'required|integer|min:1',
+            'margin_kredit' => 'required|numeric|min:0',
+        ]);
+        $cicilan->update($validated);
+        return redirect()->route('jeniscicilan.index')->with('success', 'Jenis cicilan berhasil diupdate!');
     }
 
     /**
@@ -60,6 +81,8 @@ class JenisCicilanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $cicilan = \App\Models\JenisCicilan::findOrFail($id);
+        $cicilan->delete();
+        return redirect()->route('be.admin.jeniscicilan')->with('success', 'Jenis cicilan berhasil dihapus!');
     }
 }

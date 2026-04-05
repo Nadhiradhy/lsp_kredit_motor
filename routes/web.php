@@ -11,6 +11,7 @@ use App\Http\Controllers\MotorController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\MetodeBayarController;
 use App\Http\Controllers\PengajuanKreditController;
+use App\Http\Controllers\JenisCicilanController;
 
 
 
@@ -34,10 +35,26 @@ Route::middleware(['auth', 'role:customer'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 	Route::get('/', [AdminController::class, 'index'])->name('be.admin.index');
 	Route::get('/users', [UserbeController::class, 'index'])->name('be.admin.users');
+	// Jenis Motor CRUD
 	Route::get('/jenismotor', [JenisMotorController::class, 'index'])->name('be.admin.jenismotor');
-	Route::get('/motor', [MotorController::class, 'index'])->name('be.admin.motor');
+	Route::post('/jenismotor', [JenisMotorController::class, 'store'])->name('be.admin.jenismotor.store');
+	Route::get('/jenismotor/{id}/edit', [JenisMotorController::class, 'edit'])->name('be.admin.jenismotor.edit');
+	Route::put('/jenismotor/{id}', [JenisMotorController::class, 'update'])->name('be.admin.jenismotor.update');
+	Route::delete('/jenismotor/{id}', [JenisMotorController::class, 'destroy'])->name('be.admin.jenismotor.destroy');
+
+	// Pelanggan CRUD
 	Route::get('/pelanggan', [PelangganController::class, 'index'])->name('be.admin.pelanggan');
+	Route::post('/pelanggan', [PelangganController::class, 'store'])->name('be.admin.pelanggan.store');
+	Route::get('/pelanggan/{id}/edit', [PelangganController::class, 'edit'])->name('be.admin.pelanggan.edit');
+	Route::put('/pelanggan/{id}', [PelangganController::class, 'update'])->name('be.admin.pelanggan.update');
+	Route::delete('/pelanggan/{id}', [PelangganController::class, 'destroy'])->name('be.admin.pelanggan.destroy');
+
+	Route::get('/motor', [MotorController::class, 'index'])->name('be.admin.motor');
 	Route::get('/metodebayar', [MetodeBayarController::class, 'index'])->name('be.admin.metodebayar');
+	Route::post('/metodebayar', [MetodeBayarController::class, 'store'])->name('be.admin.metodebayar.store');
+	Route::get('/metodebayar/{id}/edit', [MetodeBayarController::class, 'edit'])->name('be.admin.metodebayar.edit');
+	Route::put('/metodebayar/{id}', [MetodeBayarController::class, 'update'])->name('be.admin.metodebayar.update');
+	Route::delete('/metodebayar/{id}', [MetodeBayarController::class, 'destroy'])->name('be.admin.metodebayar.destroy');
 	Route::get('/pengajuankredit', [PengajuanKreditController::class, 'index'])->name('be.admin.pengajuankredit');
 	Route::get('/pengajuankredit/create', [PengajuanKreditController::class, 'create'])->name('be.admin.pengajuankredit.create');
 	Route::post('/pengajuankredit', [PengajuanKreditController::class, 'store'])->name('be.admin.pengajuankredit.store');
@@ -49,7 +66,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 	Route::resource('angsuran', App\Http\Controllers\AngsuranController::class);
 	Route::resource('asuransi', App\Http\Controllers\AsuransiController::class);
 	Route::resource('pengiriman', App\Http\Controllers\PengirimanController::class);
-	Route::resource('jeniscicilan', App\Http\Controllers\JenisCicilanController::class);
 	Route::resource('user', App\Http\Controllers\UserController::class);
 });
 
@@ -84,6 +100,5 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 	Route::resource('angsuran', App\Http\Controllers\AngsuranController::class);
 	Route::resource('asuransi', App\Http\Controllers\AsuransiController::class);
 	Route::resource('pengiriman', App\Http\Controllers\PengirimanController::class);
-	Route::resource('jeniscicilan', App\Http\Controllers\JenisCicilanController::class);
 	Route::resource('user', App\Http\Controllers\UserController::class);
 });

@@ -57,7 +57,7 @@
                         <span class="nav-link-text">Jenis Motor</span>
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link" href="{{ route('be.admin.motor') }}">
                         <span class="nav-icon">
@@ -74,7 +74,7 @@
                         </span>
                         <span class="nav-link-text">Motor</span>
                     </a><!--//nav-link-->
-                </li><!--//nav-item-->
+                </li><!--//nav-item--> --}}
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link" href="{{ route('be.admin.pelanggan') }}">
@@ -94,45 +94,78 @@
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
                 <li class="nav-item">
-                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link" href="{{ route('be.admin.metodebayar') }}">
                         <span class="nav-icon">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                                <path fill-rule="evenodd"
-                                    d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
-                                <circle cx="3.5" cy="5.5" r=".5" />
-                                <circle cx="3.5" cy="8" r=".5" />
-                                <circle cx="3.5" cy="10.5" r=".5" />
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-credit-card" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 3H1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6z"/>
+                                <rect width="3" height="1" x="2" y="10" rx=".5"/>
                             </svg>
                         </span>
                         <span class="nav-link-text">Metode Bayar</span>
-                    </a><!--//nav-link-->
-                </li><!--//nav-item-->
+                    </a>
+                </li>
                 <li class="nav-item">
-                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link" href="{{ route('be.admin.pengajuankredit') }}">
                         <span class="nav-icon">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                                <path fill-rule="evenodd"
-                                    d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                <path fill-rule="evenodd" d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
                                 <circle cx="3.5" cy="5.5" r=".5" />
                                 <circle cx="3.5" cy="8" r=".5" />
                                 <circle cx="3.5" cy="10.5" r=".5" />
                             </svg>
                         </span>
                         <span class="nav-link-text">Pengajuan Kredit</span>
-                    </a><!--//nav-link-->
-                </li><!--//nav-item-->
-                                <li class="nav-item">
-                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link" href="{{ route('be.admin.pengajuankredit') }}">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
                         <span class="nav-icon">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cash-stack" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 10a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2zm2-1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H4z"/>
+                                <path d="M1 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1H1V5zm2-1a1 1 0 0 0-1 1v1h12V5a1 1 0 0 0-1-1H3z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-link-text">Data Kredit</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="nav-icon">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock-history" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.515 3.879a.5.5 0 0 1 .485.621l-.5 2a.5.5 0 0 1-.97-.242l.5-2a.5.5 0 0 1 .485-.379z"/>
+                                <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1a6 6 0 1 1 0 12A6 6 0 0 1 8 2z"/>
+                                <path d="M7.5 8V5a.5.5 0 0 1 1 0v3h2a.5.5 0 0 1 0 1h-2.5A.5.5 0 0 1 7.5 8z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-link-text">Riwayat Angsuran</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="nav-icon">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-line" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h1v15h15v1H0V0zm13 10h1v3h-1v-3zm-4-5h1v8h-1V5zm-4 3h1v5H5V8z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-link-text">Laporan Kredit</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="nav-icon">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                                <path d="M5 7h6v1H5V7zm0 2h6v1H5V9zm0 2h4v1H5v-1z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-link-text">Dokumen Pengajuan</span>
+                    </a>
+                </li>
+                                {{-- <li class="nav-item">
+                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                    <a class="nav-link" href="{{ route('be.admin.jeniscicilan') }}">
+                        <span class="nav-icon"></span>
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
@@ -146,102 +179,9 @@
                         </span>
                         <span class="nav-link-text">Jenis Cicilan</span>
                     </a><!--//nav-link-->
-                </li><!--//nav-item-->
-                <li class="nav-item has-submenu">
-                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link submenu-toggle" href="#" data-bs-toggle="collapse"
-                        data-bs-target="#submenu-1" aria-expanded="false" aria-controls="submenu-1">
-                        <span class="nav-icon">
-                            <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-files"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M4 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4z" />
-                                <path
-                                    d="M6 0h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2v-1a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1H4a2 2 0 0 1 2-2z" />
-                            </svg>
-                        </span>
-                        <span class="nav-link-text">Pages</span>
-                        <span class="submenu-arrow">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                            </svg>
-                        </span><!--//submenu-arrow-->
-                    </a><!--//nav-link-->
-                    <div id="submenu-1" class="collapse submenu submenu-1" data-bs-parent="#menu-accordion">
-                        <ul class="submenu-list list-unstyled">
-                            <li class="submenu-item"><a class="submenu-link"
-                                    href="notifications.html">Notifications</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href="account.html">Account</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href="settings.html">Settings</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li><!--//nav-item-->
-                <li class="nav-item has-submenu">
-                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link submenu-toggle" href="#" data-bs-toggle="collapse"
-                        data-bs-target="#submenu-2" aria-expanded="false" aria-controls="submenu-2">
-                        <span class="nav-icon">
-                            <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-columns-gap"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M6 1H1v3h5V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z" />
-                            </svg>
-                        </span>
-                        <span class="nav-link-text">External</span>
-                        <span class="submenu-arrow">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                            </svg>
-                        </span><!--//submenu-arrow-->
-                    </a><!--//nav-link-->
-                    <div id="submenu-2" class="collapse submenu submenu-2" data-bs-parent="#menu-accordion">
-                        <ul class="submenu-list list-unstyled">
-                            <li class="submenu-item"><a class="submenu-link" href="login.html">Login</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href="signup.html">Signup</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href="reset-password.html">Reset
-                                    password</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href="404.html">404 page</a></li>
-                        </ul>
-                    </div>
-                </li><!--//nav-item-->
+                </li><!--//nav-item--> --}}
+                
 
-
-                <li class="nav-item">
-                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link" href="charts.html">
-                        <span class="nav-icon">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-line"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z" />
-                            </svg>
-                        </span>
-                        <span class="nav-link-text">Charts</span>
-                    </a><!--//nav-link-->
-                </li><!--//nav-item-->
-
-                <li class="nav-item">
-                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link" href="help.html">
-                        <span class="nav-icon">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-question-circle"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                <path
-                                    d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                            </svg>
-                        </span>
-                        <span class="nav-link-text">Help</span>
-                    </a><!--//nav-link-->
-                </li><!--//nav-item-->
             </ul><!--//app-menu-->
         </nav><!--//app-nav-->
         <div class="app-sidepanel-footer">
