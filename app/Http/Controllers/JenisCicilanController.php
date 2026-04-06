@@ -55,7 +55,7 @@ class JenisCicilanController extends Controller
     {
         $cicilan = \App\Models\JenisCicilan::findOrFail($id);
         $data = \App\Models\JenisCicilan::orderBy('lama_cicilan')->get();
-        return view('be.pages.jeniscicilan', [
+        return view('be.pages.jeniscicilan.index', [
             'title' => 'Edit Jenis Cicilan',
             'cicilan' => $cicilan,
             'data' => $data
@@ -83,6 +83,6 @@ class JenisCicilanController extends Controller
     {
         $cicilan = \App\Models\JenisCicilan::findOrFail($id);
         $cicilan->delete();
-        return redirect()->route('be.admin.jeniscicilan')->with('success', 'Jenis cicilan berhasil dihapus!');
+        return redirect()->route('jeniscicilan.index')->with('success', 'Jenis cicilan berhasil dihapus!');
     }
 }

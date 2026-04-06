@@ -12,7 +12,8 @@ class AngsuranController extends Controller
      */
     public function index()
     {
-        //
+        $angsuran = \App\Models\Angsuran::with(['kredit.pengajuanKredit.pelanggan', 'kredit.pengajuanKredit.motor'])->get();
+        return view('be.pages.angsuran', compact('angsuran'));
     }
 
     /**
@@ -36,7 +37,8 @@ class AngsuranController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $angsuran = \App\Models\Angsuran::with(['kredit.pengajuanKredit.pelanggan', 'kredit.pengajuanKredit.motor'])->findOrFail($id);
+        return view('be.pages.angsuran-show', compact('angsuran'));
     }
 
     /**

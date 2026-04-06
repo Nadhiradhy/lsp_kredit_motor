@@ -62,11 +62,18 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 	Route::put('/pengajuankredit/{id}', [PengajuanKreditController::class, 'update'])->name('be.admin.pengajuankredit.update');
 	Route::delete('/pengajuankredit/{id}', [PengajuanKreditController::class, 'destroy'])->name('be.admin.pengajuankredit.destroy');
 
+	// Data Kredit
+	Route::get('/kredit', [App\Http\Controllers\KreditController::class, 'index'])->name('be.admin.kredit');
+	Route::get('/kredit/create', [App\Http\Controllers\KreditController::class, 'create'])->name('be.admin.kredit.create');
+	Route::post('/kredit', [App\Http\Controllers\KreditController::class, 'store'])->name('be.admin.kredit.store');
+	Route::get('/kredit/{id}', [App\Http\Controllers\KreditController::class, 'show'])->name('be.admin.kredit.show');
+
 	// Resource CRUD routes
 	Route::resource('angsuran', App\Http\Controllers\AngsuranController::class);
 	Route::resource('asuransi', App\Http\Controllers\AsuransiController::class);
 	Route::resource('pengiriman', App\Http\Controllers\PengirimanController::class);
 	Route::resource('user', App\Http\Controllers\UserController::class);
+	Route::resource('jeniscicilan', App\Http\Controllers\JenisCicilanController::class);
 });
 
 // Route ke halaman login dan register (tampilan untuk Pelanggan)

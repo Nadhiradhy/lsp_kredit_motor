@@ -117,20 +117,31 @@
                         </span>
                         <span class="nav-link-text">Pengajuan Kredit</span>
                     </a>
+                    <!-- Submenu Pengajuan Kredit -->
+                    <ul class="submenu list-unstyled ms-4">
+                        <li><a class="nav-link" href="{{ route('be.admin.pengajuankredit') }}">List Pengajuan</a></li>
+                        <li><a class="nav-link" href="{{ route('be.admin.pengajuankredit.create') }}">Tambah Pengajuan</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('be.admin.kredit') }}">
                         <span class="nav-icon">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cash-stack" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 10a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2zm2-1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H4z"/>
+                                <path d="M2 10a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H4z"/>
                                 <path d="M1 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1H1V5zm2-1a1 1 0 0 0-1 1v1h12V5a1 1 0 0 0-1-1H3z"/>
                             </svg>
                         </span>
                         <span class="nav-link-text">Data Kredit</span>
                     </a>
+                    <!-- Submenu Data Kredit -->
+                    <ul class="submenu list-unstyled ms-4">
+                        <li><a class="nav-link" href="{{ route('be.admin.kredit') }}">List Kredit</a></li>
+                        <li><a class="nav-link" href="{{ route('be.admin.kredit.create') }}">Tambah Kredit</a></li>
+                        <li><a class="nav-link" href="#">Lihat Detail Kredit</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('angsuran.index') }}">
                         <span class="nav-icon">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock-history" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8.515 3.879a.5.5 0 0 1 .485.621l-.5 2a.5.5 0 0 1-.97-.242l.5-2a.5.5 0 0 1 .485-.379z"/>
@@ -140,16 +151,11 @@
                         </span>
                         <span class="nav-link-text">Riwayat Angsuran</span>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <span class="nav-icon">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-line" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0h1v15h15v1H0V0zm13 10h1v3h-1v-3zm-4-5h1v8h-1V5zm-4 3h1v5H5V8z"/>
-                            </svg>
-                        </span>
-                        <span class="nav-link-text">Laporan Kredit</span>
-                    </a>
+                    <!-- Submenu Riwayat Angsuran -->
+                    <ul class="submenu list-unstyled ms-4">
+                        <li><a class="nav-link" href="{{ route('angsuran.index') }}">List Angsuran</a></li>
+                        <li><a class="nav-link" href="#">Detail Angsuran</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
@@ -162,7 +168,7 @@
                         <span class="nav-link-text">Dokumen Pengajuan</span>
                     </a>
                 </li>
-                                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link" href="{{ route('be.admin.jeniscicilan') }}">
                         <span class="nav-icon"></span>
@@ -179,7 +185,7 @@
                         </span>
                         <span class="nav-link-text">Jenis Cicilan</span>
                     </a><!--//nav-link-->
-                </li><!--//nav-item--> --}}
+                </li><!--//nav-item-->
                 
 
             </ul><!--//app-menu-->
@@ -216,21 +222,6 @@
                                 </svg>
                             </span>
                             <span class="nav-link-text">Download</span>
-                        </a><!--//nav-link-->
-                    </li><!--//nav-item-->
-                    <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                        <a class="nav-link"
-                            href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">
-                            <span class="nav-icon">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person"
-                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M12 1H4a1 1 0 0 0-1 1v10.755S4 11 8 11s5 1.755 5 1.755V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" />
-                                    <path fill-rule="evenodd" d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                </svg>
-                            </span>
-                            <span class="nav-link-text">License</span>
                         </a><!--//nav-link-->
                     </li><!--//nav-item-->
                 </ul><!--//footer-menu-->
