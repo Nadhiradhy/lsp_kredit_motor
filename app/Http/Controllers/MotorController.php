@@ -12,7 +12,8 @@ class MotorController extends Controller
      */
     public function index()
     {
-        return view('be.pages.motor');
+        $motors = \App\Models\Motor::with('jenisMotor')->get();
+        return view('be.pages.motor.index', compact('motors'));
     }
 
     /**
@@ -20,7 +21,8 @@ class MotorController extends Controller
      */
     public function create()
     {
-        //
+        $jenis = \App\Models\JenisMotor::all();
+        return view('be.pages.motor.create', compact('jenis'));
     }
 
     /**
@@ -28,7 +30,40 @@ class MotorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_motor' => 'required|string|max:100',
+            'id_jenis' => 'required|exists:jenis_motor,id',
+            'harga_jual' => 'required|integer',
+            'deskripsi_motor' => 'required|string',
+            'warna' => 'required|string|max:50',
+            'kapasitas_mesin' => 'required|string|max:10',
+            'tahun_produksi' => 'required|string|max:4',
+            'foto1' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'foto2' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'foto3' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'stok' => 'required|integer',
+        ]);
+
+        // Handle file upload
+        $foto1 = $request->file('foto1')->store('motor', 'public');
+        $foto2 = $request->file('foto2') ? $request->file('foto2')->store('motor', 'public') : null;
+        $foto3 = $request->file('foto3') ? $request->file('foto3')->store('motor', 'public') : null;
+
+        $motor = new \App\Models\Motor();
+        $motor->nama_motor = $validated['nama_motor'];
+        $motor->id_jenis = $validated['id_jenis'];
+        $motor->harga_jual = $validated['harga_jual'];
+        $motor->deskripsi_motor = $validated['deskripsi_motor'];
+        $motor->warna = $validated['warna'];
+        $motor->kapasitas_mesin = $validated['kapasitas_mesin'];
+        $motor->tahun_produksi = $validated['tahun_produksi'];
+        $motor->foto1 = $foto1;
+        $motor->foto2 = $foto2;
+        $motor->foto3 = $foto3;
+        $motor->stok = $validated['stok'];
+        $motor->save();
+
+        return redirect()->route('be.admin.motor')->with('success', 'Data motor berhasil ditambahkan!');
     }
 
     /**

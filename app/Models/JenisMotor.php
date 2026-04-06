@@ -10,4 +10,9 @@ class JenisMotor extends Model
     protected $fillable = [
         'merk', 'jenis', 'deskripsi_jenis', 'image_url'
     ];
+
+    public function jenisMotor()
+    {
+        return $this->belongsTo(JenisMotor::class, 'id_jenis');
+    }
 }

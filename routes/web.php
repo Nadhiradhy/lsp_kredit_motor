@@ -23,7 +23,18 @@ use App\Http\Controllers\JenisCicilanController;
 
 
 // Route landing page FE (bisa diakses semua orang)
-Route::get('/', [HomeController::class, 'index'])->name('fe.home.index');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route daftar produk motor FE
+use App\Http\Controllers\CatalogController;
+Route::get('/katalog', [CatalogController::class, 'index'])->name('catalog');
+
+Route::get('/tentang', function () {
+    return view('fe.landing.about');
+})->name('about');
+
+
+use App\Http\Controllers\ProdukController;
+Route::get('/motor', [ProdukController::class, 'index'])->name('fe.motor');
 
 // Route khusus customer (FE) - hanya pelanggan/customer yang bisa akses
 Route::middleware(['auth', 'role:customer'])->group(function () {
@@ -49,7 +60,15 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 	Route::put('/pelanggan/{id}', [PelangganController::class, 'update'])->name('be.admin.pelanggan.update');
 	Route::delete('/pelanggan/{id}', [PelangganController::class, 'destroy'])->name('be.admin.pelanggan.destroy');
 
-	Route::get('/motor', [MotorController::class, 'index'])->name('be.admin.motor');
+	// Motor CRUD
+	Route::get('/motor', [MotorController::class, 'index'])->name('be.admin.motor'); // List
+	Route::get('/motor/create', [MotorController::class, 'create'])->name('be.admin.motor.create'); // Form Tambah
+	Route::post('/motor', [MotorController::class, 'store'])->name('be.admin.motor.store'); // Simpan
+	Route::get('/motor/{id}', [MotorController::class, 'show'])->name('be.admin.motor.show'); // Detail
+	Route::get('/motor/{id}/edit', [MotorController::class, 'edit'])->name('be.admin.motor.edit'); // Form Edit
+	Route::put('/motor/{id}', [MotorController::class, 'update'])->name('be.admin.motor.update'); // Update
+	Route::delete('/motor/{id}', [MotorController::class, 'destroy'])->name('be.admin.motor.destroy'); // Hapus
+
 	Route::get('/metodebayar', [MetodeBayarController::class, 'index'])->name('be.admin.metodebayar');
 	Route::post('/metodebayar', [MetodeBayarController::class, 'store'])->name('be.admin.metodebayar.store');
 	Route::get('/metodebayar/{id}/edit', [MetodeBayarController::class, 'edit'])->name('be.admin.metodebayar.edit');

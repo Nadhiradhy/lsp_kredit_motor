@@ -1,10 +1,8 @@
-@extends('fe.master')
+{{-- <!-- @extends('fe.master')
 @section('header')
-    @include('fe.header')
+    @include('fe.part.header')
 @endsection
-@section('logo')
-    @include('fe.logo')
-@endsection
+
 @section('fe.part.product')
     @include('fe.part.product')
-@endsection
+@endsection --> --}}
