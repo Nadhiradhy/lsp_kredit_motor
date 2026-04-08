@@ -13,23 +13,27 @@ return new class extends Migration
     {
         Schema::create('pelanggan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pelanggan', 255);
-            $table->string('email', 255);
-            $table->string('kata_kunci', 255);
+            $table->string('nama_pelanggan');
+            $table->string('email')->nullable();
+            $table->string('katakunci', 15)->nullable();
             $table->string('no_telp', 15);
-            $table->string('alamat1', 255);
-            $table->string('kota1', 255);
-            $table->string('propinsi1', 255);
-            $table->string('kodepos1', 255);
-            $table->string('alamat2', 255)->nullable();
-            $table->string('kota2', 255)->nullable();
-            $table->string('propinsi2', 255)->nullable();
-            $table->string('kodepos2', 255)->nullable();
-            $table->string('alamat3', 255)->nullable();
-            $table->string('kota3', 255)->nullable();
-            $table->string('propinsi3', 255)->nullable();
-            $table->string('kodepos3', 255)->nullable();
-            $table->string('foto', 255)->nullable();
+
+            $table->string('alamat1')->nullable();
+            $table->string('kota1')->nullable();
+            $table->string('provinsi1')->nullable();
+            $table->string('kodepos1')->nullable();
+
+            $table->string('alamat2')->nullable();
+            $table->string('kota2')->nullable();
+            $table->string('provinsi2')->nullable();
+            $table->string('kodepos2')->nullable();
+
+            $table->string('alamat3')->nullable();
+            $table->string('kota3')->nullable();
+            $table->string('provinsi3')->nullable();
+            $table->string('kodepos3')->nullable();
+
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

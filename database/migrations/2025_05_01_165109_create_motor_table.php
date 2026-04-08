@@ -17,13 +17,13 @@ return new class extends Migration
             $table->unsignedBigInteger('id_jenis');
             $table->foreign('id_jenis')->references('id')->on('jenis_motor')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('harga_jual');
-            $table->text('deskripsi_motor');
+            $table->text('deskripsi_motor')->nullable();
             $table->string('warna', 50);
             $table->string('kapasitas_mesin', 10);
             $table->string('tahun_produksi', 4);
-            $table->string('foto1', 255);
-            $table->string('foto2', 255)->nullable();
-            $table->string('foto3', 255)->nullable();
+            $table->string('foto1')->nullable();
+            $table->string('foto2')->nullable();
+            $table->string('foto3')->nullable();
             $table->integer('stok');
             $table->timestamps();
         });

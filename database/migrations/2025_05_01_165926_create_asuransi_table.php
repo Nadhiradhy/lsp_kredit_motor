@@ -17,9 +17,8 @@ return new class extends Migration
             $table->string('nama_asuransi', 50);
             $table->decimal('margin_asuransi', 8, 2);
             $table->string('no_rekening', 25);
-            $table->string('url_logo', 255);
+            $table->string('url_logo')->nullable();
             $table->timestamps();
-
         });
     }
 

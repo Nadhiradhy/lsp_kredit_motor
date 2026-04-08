@@ -14,26 +14,30 @@ return new class extends Migration
         Schema::create('pengajuan_kredit', function (Blueprint $table) {
             $table->id();
             $table->date('tgl_pengajuan_kredit');
-            $table->unsignedBigInteger('id_pelanggan');
-            $table->foreign('id_pelanggan')->references('id')->on('pelanggan')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('id_motor');
-            $table->foreign('id_motor')->references('id')->on('motor')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreignId('id_pelanggan')->constrained('pelanggan')->cascadeOnDelete();
+            $table->foreignId('id_motor')->constrained('motor')->cascadeOnDelete();
+            $table->foreignId('id_jenis_cicilan')->constrained('jenis_cicilan');
+            $table->foreignId('id_asuransi')->constrained('asuransi');
+
             $table->integer('harga_cash');
             $table->integer('dp');
-            $table->unsignedBigInteger('id_jenis_cicilan');
-            $table->foreign('id_jenis_cicilan')->references('id')->on('jenis_cicilan')->onDelete('cascade')->onUpdate('cascade');
             $table->double('harga_kredit');
-            $table->unsignedBigInteger('id_asuransi');
-            $table->foreign('id_asuransi')->references('id')->on('asuransi')->onDelete('cascade')->onUpdate('cascade');
             $table->double('biaya_asuransi_perbulan');
             $table->double('cicilan_perbulan');
-            $table->string('url_kk', 255)->nullable();
-            $table->string('url_ktp', 255)->nullable();
-            $table->string('url_npwp', 255)->nullable();
-            $table->string('url_slip_gaji', 255)->nullable();
-            $table->string('url_foto', 255)->nullable();
-            $table->enum('status_pengajuan', ['Menunggu Konfirmasi', 'Diproses', 'Dibatalkan Pembeli', 'Dibatalkan Penjual', 'Bermasalah', 'Diterima']);
-            $table->string('keterangan_status_pengajuan', 255)->nullable();
+
+            $table->string('url_kk')->nullable();
+            $table->string('url_ktp')->nullable();
+            $table->string('url_npwp')->nullable();
+            $table->string('url_slip_gaji')->nullable();
+            $table->string('url_foto')->nullable();
+
+            $table->enum('status_pengajuan', [
+                'Menunggu Konfirmasi','Diproses','Dibatalkan Pembeli',
+                'Dibatalkan Penjual','Bermasalah','Diterima'
+            ]);
+
+            $table->string('keterangan_status_pengajuan')->nullable();
             $table->timestamps();
 
         });

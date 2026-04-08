@@ -40,7 +40,7 @@
                 </li><!--//nav-item-->
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link" href="{{ route('be.admin.jenismotor') }}">
+                    <a class="nav-link" href="{{ route('be.admin.pelanggan') }}">
                         <span class="nav-icon">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +53,7 @@
                                 <circle cx="3.5" cy="10.5" r=".5" />
                             </svg>
                         </span>
-                        <span class="nav-link-text">Jenis Motor</span>
+                        <span class="nav-link-text">Pelanggan</span>
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
                 <li class="nav-item">
@@ -78,7 +78,8 @@
                 </li>
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link" href="{{ route('be.admin.pelanggan') }}">
+                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                    <a class="nav-link" href="{{ route('be.admin.jenismotor') }}">
                         <span class="nav-icon">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +92,7 @@
                                 <circle cx="3.5" cy="10.5" r=".5" />
                             </svg>
                         </span>
-                        <span class="nav-link-text">Pelanggan</span>
+                        <span class="nav-link-text">Jenis Motor</span>
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
                 <li class="nav-item">

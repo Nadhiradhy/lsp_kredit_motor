@@ -13,16 +13,20 @@ return new class extends Migration
     {
         Schema::create('pengiriman', function (Blueprint $table) {
             $table->id();
-            $table->string('no_invoice', 255)->nullable();
+
+            $table->string('invoice');
             $table->dateTime('tgl_kirim')->nullable();
-            $table->dateTime('tgl_tiba')->nullable();
-            $table->enum('status_kirim', ['Sedang Dikirim', 'Tiba Di Tujuan'])->default('Sedang Dikirim');
-            $table->string('nama_kurir', 30)->nullable();
-            $table->string('telpon_kurir', 15)->nullable();
-            $table->string('bukti_foto', 255)->nullable();
+            $table->dateTime('tgl_terima')->nullable();
+
+            $table->enum('status_kirim', ['Sedang Dikirim','Tiba Di Tujuan']);
+
+            $table->string('nama_kurir', 30);
+            $table->string('telepon_kurir', 15);
+            $table->string('bukti_foto')->nullable();
             $table->text('keterangan')->nullable();
-            $table->unsignedBigInteger('id_kredit');
-            $table->foreign('id_kredit')->references('id')->on('kredit')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreignId('id_kredit')->constrained('kredit')->cascadeOnDelete();
+
             $table->timestamps();
         });
     }
