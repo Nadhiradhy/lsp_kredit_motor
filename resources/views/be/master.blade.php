@@ -25,6 +25,7 @@
     <div class="app-wrapper">
         @yield('content')
     </div>
+    @stack('scripts')
     {{-- ...footer dan script --}}
 </body>
 </html>

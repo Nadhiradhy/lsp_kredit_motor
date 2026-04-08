@@ -69,17 +69,20 @@ class MotorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $motor = \App\Models\Motor::with('jenisMotor')->findOrFail($id);
+        return view('be.pages.motor.show', compact('motor'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $motor = \App\Models\Motor::findOrFail($id);
+        $jenis = \App\Models\JenisMotor::all();
+        return view('be.pages.motor.edit', compact('motor', 'jenis'));
     }
 
     /**
