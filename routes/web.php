@@ -1,4 +1,28 @@
+
 <?php
+
+use App\Http\Controllers\MotorController;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\MetodeBayarController;
+use App\Http\Controllers\PengajuanKreditController;
+use App\Http\Controllers\JenisCicilanController;
+// --- IMPORT CONTROLLER (Sesuaikan Path Folder) ---
+use App\Http\Controllers\auth\fe\RegisterController;
+
+// --- ROUTE AUTH ADMIN (BE) ---
+use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+
+// Login admin
+Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.process');
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+
+// Dashboard admin (BE)
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    // ...route admin lain bisa ditambah di sini
+});
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -6,14 +30,14 @@ use App\Http\Controllers\UserbeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\JenisMotorController;
-use App\Http\Controllers\MotorController;
-use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\MetodeBayarController;
-use App\Http\Controllers\PengajuanKreditController;
-use App\Http\Controllers\JenisCicilanController;
+
+
+
+
+
 // --- IMPORT CONTROLLER (Sesuaikan Path Folder) ---
 use App\Http\Controllers\auth\fe\LoginController;
-use App\Http\Controllers\auth\fe\RegisterController;
+
 
 
 

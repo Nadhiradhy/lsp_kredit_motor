@@ -12,7 +12,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = \App\Models\User::all();
+        return view('be.pages.user.index', compact('users'));
     }
 
     /**
@@ -20,7 +21,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('be.pages.user.create');
     }
 
     /**
@@ -28,7 +29,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:5',
+            'role' => 'required',
+        ]);
+        $validated['password'] = bcrypt($validated['password']);
+        \App\Models\User::create($validated);
+        return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan');
     }
 
     /**
@@ -36,7 +45,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = \App\Models\User::findOrFail($id);
+        return view('be.pages.user.show', compact('user'));
     }
 
     /**
@@ -44,7 +54,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = \App\Models\User::findOrFail($id);
+        return view('be.pages.user.edit', compact('user'));
     }
 
     /**
@@ -52,7 +63,17 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = \App\Models\User::findOrFail($id);
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'role' => 'required',
+        ]);
+        if ($request->filled('password')) {
+            $validated['password'] = bcrypt($request->password);
+        }
+        $user->update($validated);
+        return redirect()->route('user.index')->with('success', 'User berhasil diupdate');
     }
 
     /**
@@ -60,6 +81,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = \App\Models\User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('user.index')->with('success', 'User berhasil dihapus');
     }
 }

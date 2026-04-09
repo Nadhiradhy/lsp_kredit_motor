@@ -20,9 +20,9 @@
                                 MotoKredit menyediakan platform pengajuan kredit motor tercepat, transparan, dan terpercaya. Sesuaikan DP dan tenor sesuai kemampuan finansial Anda.
                             </p>
                             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                                <button onclick="navigate('katalog')" class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold shadow-xl shadow-blue-600/20 transition-all hover:-translate-y-1 flex justify-center items-center">
+                                <a href="{{ route('catalog') }}" class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold shadow-xl shadow-blue-600/20 transition-all hover:-translate-y-1 flex justify-center items-center">
                                     Lihat Pilihan Motor <i class="fa-solid fa-arrow-right ml-2"></i>
-                                </button>
+                                </a>
                                 <button onclick="navigate('about')" class="px-8 py-4 glass-panel hover:bg-slate-800 text-white rounded-xl font-semibold transition-all flex justify-center items-center">
                                     Pelajari Lebih Lanjut
                                 </button>

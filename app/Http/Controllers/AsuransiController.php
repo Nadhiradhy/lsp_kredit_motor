@@ -12,7 +12,8 @@ class AsuransiController extends Controller
      */
     public function index()
     {
-        //
+        $asuransi = \App\Models\Asuransi::orderBy('created_at', 'desc')->get();
+        return view('be.pages.asuransi.index', compact('asuransi'));
     }
 
     /**
@@ -20,7 +21,7 @@ class AsuransiController extends Controller
      */
     public function create()
     {
-        //
+        return view('be.pages.asuransi.create');
     }
 
     /**
@@ -28,7 +29,20 @@ class AsuransiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_perusahaan_asuransi' => 'required|string|max:30',
+            'nama_asuransi' => 'required|string|max:50',
+            'margin_asuransi' => 'required|numeric',
+            'no_rekening' => 'required|string|max:25',
+            'url_logo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        if ($request->hasFile('url_logo')) {
+            $validated['url_logo'] = $request->file('url_logo')->store('asuransi', 'public');
+        }
+
+        \App\Models\Asuransi::create($validated);
+        return redirect()->route('asuransi.index')->with('success', 'Data asuransi berhasil ditambahkan');
     }
 
     /**
@@ -36,7 +50,8 @@ class AsuransiController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $asuransi = \App\Models\Asuransi::findOrFail($id);
+        return view('be.pages.asuransi.show', compact('asuransi'));
     }
 
     /**
@@ -44,7 +59,8 @@ class AsuransiController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $asuransi = \App\Models\Asuransi::findOrFail($id);
+        return view('be.pages.asuransi.edit', compact('asuransi'));
     }
 
     /**
@@ -52,7 +68,23 @@ class AsuransiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $asuransi = \App\Models\Asuransi::findOrFail($id);
+        $validated = $request->validate([
+            'nama_perusahaan_asuransi' => 'required|string|max:30',
+            'nama_asuransi' => 'required|string|max:50',
+            'margin_asuransi' => 'required|numeric',
+            'no_rekening' => 'required|string|max:25',
+            'url_logo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        if ($request->hasFile('url_logo')) {
+            // Hapus logo lama jika ada
+            if ($asuransi->url_logo) \Storage::disk('public')->delete($asuransi->url_logo);
+            $validated['url_logo'] = $request->file('url_logo')->store('asuransi', 'public');
+        }
+
+        $asuransi->update($validated);
+        return redirect()->route('asuransi.index')->with('success', 'Data asuransi berhasil diupdate');
     }
 
     /**
@@ -60,6 +92,11 @@ class AsuransiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $asuransi = \App\Models\Asuransi::findOrFail($id);
+        if ($asuransi->url_logo) {
+            \Storage::disk('public')->delete($asuransi->url_logo);
+        }
+        $asuransi->delete();
+        return redirect()->route('asuransi.index')->with('success', 'Data asuransi berhasil dihapus');
     }
 }

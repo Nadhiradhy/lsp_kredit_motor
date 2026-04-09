@@ -24,20 +24,22 @@
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
                 <li class="nav-item">
-                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link" href="{{ route('be.admin.users') }}">
+                    <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-user">
                         <span class="nav-icon">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z" />
-                                <path fill-rule="evenodd"
-                                    d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z" />
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z" />
+                                <path fill-rule="evenodd" d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z" />
                             </svg>
                         </span>
-                        <span class="nav-link-text">User</span>
-                    </a><!--//nav-link-->
-                </li><!--//nav-item-->
+                        <span class="nav-link-text">User Management</span>
+                        <span class="ms-auto"><i class="bi bi-chevron-down"></i></span>
+                    </a>
+                    <ul class="submenu list-unstyled ms-4 collapse" id="submenu-user">
+                        <li><a class="nav-link" href="{{ route('user.index') }}">List User</a></li>
+                        <li><a class="nav-link" href="{{ route('user.create') }}">Tambah User</a></li>
+                        <!-- <li><a class="nav-link" href="#">Role Management</a></li> -->
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link" href="{{ route('be.admin.pelanggan') }}">
@@ -53,7 +55,7 @@
                                 <circle cx="3.5" cy="10.5" r=".5" />
                             </svg>
                         </span>
-                        <span class="nav-link-text">Pelanggan</span>
+                        <span class="nav-link-text">Pelanggan Management</span>
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
                 <li class="nav-item">
@@ -67,14 +69,12 @@
                                 <circle cx="3.5" cy="10.5" r=".5" />
                             </svg>
                         </span>
-                        <span class="nav-link-text">Motor</span>
+                        <span class="nav-link-text">Motor Management</span>
                     </a>
-                </li>
-                <li class="nav-item ms-4">
-                    <a class="nav-link" href="{{ route('be.admin.motor.create') }}">
-                        <span class="nav-icon"></span>
-                        <span class="nav-link-text">Tambah Motor</span>
-                    </a>
+                        <ul class="submenu list-unstyled ms-4 collapse" id="submenu-motor">
+                            <li><a class="nav-link" href="{{ route('be.admin.motor') }}">List Motor</a></li>
+                            <li><a class="nav-link" href="{{ route('be.admin.motor.create') }}">Tambah Motor</a></li>
+                        </ul>
                 </li>
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
@@ -92,84 +92,9 @@
                                 <circle cx="3.5" cy="10.5" r=".5" />
                             </svg>
                         </span>
-                        <span class="nav-link-text">Jenis Motor</span>
+                        <span class="nav-link-text">Jenis Motor Management</span>
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('be.admin.metodebayar') }}">
-                        <span class="nav-icon">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-credit-card" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 3H1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6z"/>
-                                <rect width="3" height="1" x="2" y="10" rx=".5"/>
-                            </svg>
-                        </span>
-                        <span class="nav-link-text">Metode Bayar</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('be.admin.pengajuankredit') }}">
-                        <span class="nav-icon">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                                <path fill-rule="evenodd" d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
-                                <circle cx="3.5" cy="5.5" r=".5" />
-                                <circle cx="3.5" cy="8" r=".5" />
-                                <circle cx="3.5" cy="10.5" r=".5" />
-                            </svg>
-                        </span>
-                        <span class="nav-link-text">Pengajuan Kredit</span>
-                    </a>
-                    <!-- Submenu Pengajuan Kredit -->
-                    <ul class="submenu list-unstyled ms-4">
-                        <li><a class="nav-link" href="{{ route('be.admin.pengajuankredit') }}">List Pengajuan</a></li>
-                        <li><a class="nav-link" href="{{ route('be.admin.pengajuankredit.create') }}">Tambah Pengajuan</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('be.admin.kredit') }}">
-                        <span class="nav-icon">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cash-stack" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 10a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H4z"/>
-                                <path d="M1 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1H1V5zm2-1a1 1 0 0 0-1 1v1h12V5a1 1 0 0 0-1-1H3z"/>
-                            </svg>
-                        </span>
-                        <span class="nav-link-text">Data Kredit</span>
-                    </a>
-                    <!-- Submenu Data Kredit -->
-                    <ul class="submenu list-unstyled ms-4">
-                        <li><a class="nav-link" href="{{ route('be.admin.kredit') }}">List Kredit</a></li>
-                        <li><a class="nav-link" href="{{ route('be.admin.kredit.create') }}">Tambah Kredit</a></li>
-                        <li><a class="nav-link" href="#">Lihat Detail Kredit</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('angsuran.index') }}">
-                        <span class="nav-icon">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock-history" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.515 3.879a.5.5 0 0 1 .485.621l-.5 2a.5.5 0 0 1-.97-.242l.5-2a.5.5 0 0 1 .485-.379z"/>
-                                <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1a6 6 0 1 1 0 12A6 6 0 0 1 8 2z"/>
-                                <path d="M7.5 8V5a.5.5 0 0 1 1 0v3h2a.5.5 0 0 1 0 1h-2.5A.5.5 0 0 1 7.5 8z"/>
-                            </svg>
-                        </span>
-                        <span class="nav-link-text">Riwayat Angsuran</span>
-                    </a>
-                    <!-- Submenu Riwayat Angsuran -->
-                    <ul class="submenu list-unstyled ms-4">
-                        <li><a class="nav-link" href="{{ route('angsuran.index') }}">List Angsuran</a></li>
-                        <li><a class="nav-link" href="#">Detail Angsuran</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <span class="nav-icon">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
-                                <path d="M5 7h6v1H5V7zm0 2h6v1H5V9zm0 2h4v1H5v-1z"/>
-                            </svg>
-                        </span>
-                        <span class="nav-link-text">Dokumen Pengajuan</span>
-                    </a>
-                </li>
                 {{-- <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link" href="{{ route('be.admin.jeniscicilan') }}">
@@ -188,9 +113,103 @@
                         <span class="nav-link-text">Jenis Cicilan</span>
                     </a><!--//nav-link-->
                 </li><!--//nav-item--> --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-asuransi">
+                        <span class="nav-icon">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                                <path d="M5 7h6v1H5V7zm0 2h6v1H5V9zm0 2h4v1H5v-1z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-link-text">Asuransi Management</span>
+                        <span class="ms-auto"><i class="bi bi-chevron-down"></i></span>
+                    </a>
+                    <ul class="submenu list-unstyled ms-4 collapse" id="submenu-asuransi">
+                        <li><a class="nav-link" href="{{ route('asuransi.index') }}">List Asuransi</a></li>
+                        <li><a class="nav-link" href="{{ route('asuransi.create') }}">Tambah Asuransi</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-pengajuankredit">
+                        <span class="nav-icon">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                <path fill-rule="evenodd" d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
+                                <circle cx="3.5" cy="5.5" r=".5" />
+                                <circle cx="3.5" cy="8" r=".5" />
+                                <circle cx="3.5" cy="10.5" r=".5" />
+                            </svg>
+                        </span>
+                        <span class="nav-link-text">Pengajuan Kredit Management</span>
+                        <span class="ms-auto"><i class="bi bi-chevron-down"></i></span>
+                    </a>
+                    <ul class="submenu list-unstyled ms-4 collapse" id="submenu-pengajuankredit">
+                        <li><a class="nav-link" href="{{ route('be.admin.pengajuankredit') }}">List Pengajuan</a></li>
+                        <li><a class="nav-link" href="{{ route('be.admin.pengajuankredit.create') }}">Tambah Pengajuan</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-kredit">
+                        <span class="nav-icon">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cash-stack" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 10a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H4z"/>
+                                <path d="M1 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1H1V5zm2-1a1 1 0 0 0-1 1v1h12V5a1 1 0 0 0-1-1H3z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-link-text">Kredit Management</span>
+                        <span class="ms-auto"><i class="bi bi-chevron-down"></i></span>
+                    </a>
+                    <ul class="submenu list-unstyled ms-4 collapse" id="submenu-kredit">
+                        <li><a class="nav-link" href="{{ route('be.admin.kredit') }}">List Kredit</a></li>
+                        <li><a class="nav-link" href="{{ route('be.admin.kredit.create') }}">Tambah Kredit</a></li>
+                        <li><a class="nav-link" href="#">Lihat Detail Kredit</a></li>
+                    </ul>
+                </li>
+                                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('be.admin.metodebayar') }}">
+                        <span class="nav-icon">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-credit-card" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 3H1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6z"/>
+                                <rect width="3" height="1" x="2" y="10" rx=".5"/>
+                            </svg>
+                        </span>
+                        <span class="nav-link-text">Metode Bayar Management</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-angsuran">
+                        <span class="nav-icon">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock-history" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.515 3.879a.5.5 0 0 1 .485.621l-.5 2a.5.5 0 0 1-.97-.242l.5-2a.5.5 0 0 1 .485-.379z"/>
+                                <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1a6 6 0 1 1 0 12A6 6 0 0 1 8 2z"/>
+                                <path d="M7.5 8V5a.5.5 0 0 1 1 0v3h2a.5.5 0 0 1 0 1h-2.5A.5.5 0 0 1 7.5 8z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-link-text">Angsuran Management</span>
+                        <span class="ms-auto"><i class="bi bi-chevron-down"></i></span>
+                    </a>
+                    <ul class="submenu list-unstyled ms-4 collapse" id="submenu-angsuran">
+                        <li><a class="nav-link" href="{{ route('angsuran.index') }}">List Angsuran</a></li>
+                        <li><a class="nav-link" href="{{ route('angsuran.create') }}">Tambah Angsuran</a></li>
+                    </ul>
+                </li>
 
             </ul><!--//app-menu-->
         </nav><!--//app-nav-->
+        <script>
+        // Sidebar dropdown simple toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.nav-item > .nav-link').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    var submenu = this.parentElement.querySelector('.submenu');
+                    if (submenu) {
+                        e.preventDefault();
+                        submenu.classList.toggle('d-block');
+                    }
+                });
+            });
+        });
+        </script>
         <div class="app-sidepanel-footer">
             <nav class="app-nav app-nav-footer">
                 <ul class="app-menu footer-menu list-unstyled">

@@ -46,7 +46,13 @@
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="bg-white py-8 px-4 sm:px-10">
-            <form class="space-y-6" action="#" method="POST">
+            <form class="space-y-6" action="{{ route('admin.login.process') }}" method="POST">
+                @csrf
+                                @if ($errors->any())
+                                    <div class="mb-4 text-red-600 text-sm">
+                                        {{ $errors->first() }}
+                                    </div>
+                                @endif
                 
                 <!-- Input Email -->
                 <div>
