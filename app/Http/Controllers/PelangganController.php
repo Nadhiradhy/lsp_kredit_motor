@@ -35,7 +35,7 @@ class PelangganController extends Controller
         $validated = $request->validate([
             'nama_pelanggan' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:pelanggan,email',
-            'kata_kunci' => 'required|string|min:6',
+            'katakunci' => 'required|string|min:6',
             'no_telp' => 'required|string|max:15',
             'alamat1' => 'required|string|max:255',
             'kota1' => 'required|string|max:255',
@@ -53,7 +53,7 @@ class PelangganController extends Controller
         ]);
 
         // Hash password sesuai standar Laravel
-        $validated['kata_kunci'] = bcrypt($validated['kata_kunci']);
+        $validated['katakunci'] = bcrypt($validated['katakunci']);
 
         // Handle upload foto jika ada
         if ($request->hasFile('foto')) {
@@ -98,7 +98,7 @@ class PelangganController extends Controller
         $validated = $request->validate([
             'nama_pelanggan' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:pelanggan,email,' . $id,
-            'kata_kunci' => 'nullable|string|min:6',
+            'katakunci' => 'nullable|string|min:6',
             'no_telp' => 'required|string|max:15',
             'alamat1' => 'required|string|max:255',
             'kota1' => 'required|string|max:255',
@@ -116,10 +116,10 @@ class PelangganController extends Controller
         ]);
 
         // Jika password diisi, hash dan update
-        if ($request->filled('kata_kunci')) {
-            $validated['kata_kunci'] = bcrypt($request->kata_kunci);
+        if ($request->filled('katakunci')) {
+            $validated['katakunci'] = bcrypt($request->katakunci);
         } else {
-            unset($validated['kata_kunci']);
+            unset($validated['katakunci']);
         }
 
         // Handle upload foto jika ada

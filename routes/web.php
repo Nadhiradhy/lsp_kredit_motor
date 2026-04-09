@@ -4,45 +4,48 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserbeController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AuthController as LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\JenisMotorController;
 use App\Http\Controllers\MotorController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\MetodeBayarController;
+use App\Http\Controllers\PengajuanKreditController;
+use App\Http\Controllers\JenisCicilanController;
+// --- IMPORT CONTROLLER (Sesuaikan Path Folder) ---
+use App\Http\Controllers\auth\fe\LoginController;
+use App\Http\Controllers\auth\fe\RegisterController;
 
-// Route khusus customer (FE) - hanya pelanggan/customer yang bisa akses
-Route::middleware(['auth', 'role:customer'])->group(function () {
-	// Contoh: Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('fe.dashboard');
-	// Tambahkan route FE lain yang hanya boleh diakses customer di sini
-});
 
-// Route login admin (BE) terpisah
-use App\Http\Controllers\Admin\AdminAuthController;
-use App\Http\Controllers\Admin\AdminDashboardController;
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('login');
-    Route::post('login', [AdminAuthController::class, 'login']);
-    Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
-    Route::get('dashboard', [AdminDashboardController::class, 'index'])->middleware('auth')->name('dashboard');
-});
 
-// Route khusus admin (BE) - hanya admin yang bisa akses (CRUD, dsb)
-Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
-	Route::get('/', [AdminController::class, 'index'])->name('be.admin.index');
-	Route::get('/users', [UserbeController::class, 'index'])->name('be.admin.users');
-	// Jenis Motor CRUD
-	Route::get('/jenismotor', [JenisMotorController::class, 'index'])->name('be.admin.jenismotor');
-	Route::post('/jenismotor', [JenisMotorController::class, 'store'])->name('be.admin.jenismotor.store');
-	Route::get('/jenismotor/{id}/edit', [JenisMotorController::class, 'edit'])->name('be.admin.jenismotor.edit');
-	Route::put('/jenismotor/{id}', [JenisMotorController::class, 'update'])->name('be.admin.jenismotor.update');
-	Route::delete('/jenismotor/{id}', [JenisMotorController::class, 'destroy'])->name('be.admin.jenismotor.destroy');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-	// Pelanggan CRUD
-	Route::get('/pelanggan', [PelangganController::class, 'index'])->name('be.admin.pelanggan');
-	Route::post('/pelanggan', [PelangganController::class, 'store'])->name('be.admin.pelanggan.store');
-	Route::get('/pelanggan/{id}/edit', [PelangganController::class, 'edit'])->name('be.admin.pelanggan.edit');
-	Route::put('/pelanggan/{id}', [PelangganController::class, 'update'])->name('be.admin.pelanggan.update');
-	Route::delete('/pelanggan/{id}', [PelangganController::class, 'destroy'])->name('be.admin.pelanggan.destroy');
+// --- ROUTE AUTHENTICATION ---
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.process');
+
+Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.create_account');
+
+Route::post('/logout', function() {
+    session()->forget('pelanggan_id');
+    Auth::logout(); // Sebaiknya gunakan Auth::logout() jika pakai sistem auth Laravel
+    return redirect()->route('login');
+})->name('logout');
+
+// Route landing page FE (bisa diakses semua orang)
+Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route daftar produk motor FE
+use App\Http\Controllers\CatalogController;
+Route::get('/katalog', [CatalogController::class, 'index'])->name('catalog');
+
+Route::get('/tentang', function () {
+    return view('fe.landing.about');
+})->name('about');
+
+
 use App\Http\Controllers\ProdukController;
 Route::get('/motor', [ProdukController::class, 'index'])->name('fe.motor');
 
@@ -105,15 +108,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 	Route::resource('jeniscicilan', App\Http\Controllers\JenisCicilanController::class);
 });
 
-// Route ke halaman login dan register (tampilan untuk Pelanggan)
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-// Route ke halaman register (tampilan untuk Pelanggan)
-Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register', [AuthController::class, 'register.create_account'])->name('register.create_account');
-
 
 
 
@@ -138,3 +132,5 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 	Route::resource('pengiriman', App\Http\Controllers\PengirimanController::class);
 	Route::resource('user', App\Http\Controllers\UserController::class);
 });
+
+// Tampilkan form login

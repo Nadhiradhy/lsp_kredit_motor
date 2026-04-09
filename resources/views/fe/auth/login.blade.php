@@ -125,7 +125,8 @@
             </div>
 
             <!-- Form -->
-            <form onsubmit="event.preventDefault();" class="space-y-5">
+            <form method="POST" action="{{ route('login.process') }}">
+                @csrf
                 <!-- Field Email -->
                 <div>
                     <label class="block text-sm font-medium text-gray-300 mb-1.5">Alamat Email</label>
@@ -133,7 +134,7 @@
                         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                             <i data-lucide="mail" class="w-5 h-5 text-gray-500"></i>
                         </div>
-                        <input type="email" placeholder="nama@email.com" required
+                        <input type="email" name="email" placeholder="nama@email.com" required
                             class="w-full bg-brand-input border border-brand-border text-white text-sm rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent block w-full pl-11 p-3.5 transition-all outline-none">
                     </div>
                 </div>
@@ -148,7 +149,7 @@
                         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                             <i data-lucide="lock" class="w-5 h-5 text-gray-500"></i>
                         </div>
-                        <input type="password" id="login-password" placeholder="••••••••" required
+                        <input type="password" name="katakunci" id="login-password" placeholder="••••••••" required
                             class="w-full bg-brand-input border border-brand-border text-white text-sm rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent block w-full pl-11 pr-11 p-3.5 transition-all outline-none">
                         <div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-gray-400 hover:text-white" onclick="togglePassword('login-password', 'login-eye-icon')">
                             <i data-lucide="eye" id="login-eye-icon" class="w-5 h-5"></i>

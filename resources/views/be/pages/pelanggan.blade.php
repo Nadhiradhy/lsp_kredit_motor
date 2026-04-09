@@ -39,8 +39,8 @@
                             <input type="text" class="form-control" id="no_telp" name="no_telp" value="{{ old('no_telp', $pelanggan->no_telp ?? '') }}" required>
                         </div>
                         <div class="mb-3">
-                            <label for="kata_kunci" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="kata_kunci" name="kata_kunci" @if(!isset($pelanggan)) required @endif>
+                            <label for="katakunci" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="katakunci" name="katakunci" @if(!isset($pelanggan)) required @endif>
                             @if(isset($pelanggan))<small class="text-muted">Kosongkan jika tidak ingin mengubah password</small>@endif
                         </div>
                         <div class="mb-3">
