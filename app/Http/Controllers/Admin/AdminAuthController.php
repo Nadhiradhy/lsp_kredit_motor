@@ -16,12 +16,12 @@ class AdminAuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            // Cek role admin
-            if (auth()->user()->role === 'admin') {
+            // Cek role admin, ceo, marketing
+            if (in_array(auth()->user()->role, ['admin', 'ceo', 'marketing'])) {
                 return redirect()->route('admin.dashboard');
             } else {
                 Auth::logout();
-                return back()->withErrors(['email' => 'Akses hanya untuk admin']);
+                return back()->withErrors(['email' => 'Akses hanya untuk admin, ceo, atau marketing']);
             }
         }
         return back()->withErrors(['email' => 'Email atau password salah']);

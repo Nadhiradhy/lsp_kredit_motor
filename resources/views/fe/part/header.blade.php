@@ -12,7 +12,7 @@
                     Beranda
                 </a>
                 <a href="{{ route('catalog') }}" class="nav-item {{ request()->routeIs('catalog') ? 'text-blue-400' : 'text-slate-300 hover:text-white' }} transition">
-                    Katalog
+                    Daftar Motor
                 </a>
                 <a href="{{ route('about') }}" class="nav-item {{ request()->routeIs('about') ? 'text-blue-400' : 'text-slate-300 hover:text-white' }} transition">
                     Tentang

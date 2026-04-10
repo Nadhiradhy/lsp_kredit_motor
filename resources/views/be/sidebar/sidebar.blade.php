@@ -23,6 +23,7 @@
                         <span class="nav-link-text">Dashboard</span>
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
+                @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'ceo'))
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-user">
                         <span class="nav-icon">
@@ -36,10 +37,13 @@
                     </a>
                     <ul class="submenu list-unstyled ms-4 collapse" id="submenu-user">
                         <li><a class="nav-link" href="{{ route('user.index') }}">List User</a></li>
+                        @if(auth()->user()->role === 'admin')
                         <li><a class="nav-link" href="{{ route('user.create') }}">Tambah User</a></li>
+                        @endif
                         <!-- <li><a class="nav-link" href="#">Role Management</a></li> -->
                     </ul>
                 </li>
+                @endif
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link" href="{{ route('be.admin.pelanggan') }}">

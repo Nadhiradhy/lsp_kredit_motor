@@ -19,11 +19,10 @@ class LoginController extends Controller
             'katakunci' => 'required|string',
         ]);
 
-        $pelanggan = \App\Models\Pelanggan::where('email', $credentials['email'])->first();
-
-        if ($pelanggan && \Hash::check($credentials['katakunci'], $pelanggan->katakunci)) {
-            session(['pelanggan_id' => $pelanggan->id]);
-            return redirect()->route('home')->with('success', 'Login berhasil!');
+        // Attempt login with custom guard and custom password field
+        if (\Auth::guard('pelanggan')->attempt(['email' => $credentials['email'], 'katakunci' => $credentials['katakunci']])) {
+            // Authenticated as pelanggan
+            return redirect()->intended(route('home'))->with('success', 'Login berhasil!');
         }
 
         return back()->withErrors(['email' => 'Email atau kata sandi salah.'])->withInput();

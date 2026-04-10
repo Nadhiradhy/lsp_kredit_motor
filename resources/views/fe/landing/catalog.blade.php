@@ -25,6 +25,10 @@
                                 <div class="text-blue-400 font-semibold mb-2">Rp {{ number_format($motor->harga_jual, 0, ',', '.') }}</div>
                                 <div class="text-xs text-slate-400 mb-2">Stok: {{ $motor->stok }}</div>
                                 <p class="text-xs text-slate-300 flex-1">{{ str($motor->deskripsi_motor)->limit(60) }}</p>
+                                <div class="mt-4 flex gap-2">
+                                    <a href="{{ route('fe.motor.detail', $motor->id) }}" class="border border-red-500 text-red-500 px-4 py-2 rounded-full text-sm font-medium hover:bg-red-500 hover:text-white transition">Detail Motor</a>
+                                    <a href="{{ route('fe.pengajuan.create', $motor->id) }}" class="bg-red-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-red-600 transition">Ajukan</a>
+                                </div>
                             </div>
                         </div>
                     @empty
