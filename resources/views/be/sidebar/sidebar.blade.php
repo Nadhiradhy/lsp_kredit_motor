@@ -95,9 +95,9 @@
                         <span class="nav-link-text">Jenis Motor Management</span>
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link" href="{{ route('be.admin.jeniscicilan') }}">
+                    <a class="nav-link" href="{{ route('jeniscicilan.index') }}">
                         <span class="nav-icon"></span>
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -112,7 +112,7 @@
                         </span>
                         <span class="nav-link-text">Jenis Cicilan</span>
                     </a><!--//nav-link-->
-                </li><!--//nav-item--> --}}
+                </li><!--//nav-item-->
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-asuransi">
                         <span class="nav-icon">
