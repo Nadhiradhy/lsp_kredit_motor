@@ -12,8 +12,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $motor = \App\Models\Motor::orderBy('created_at', 'desc')->first();
         return view('fe.landing.index', [
             'title' => 'Home',
+            'motor' => $motor,
         ]);
     }
 

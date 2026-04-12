@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in to Portal</title>
+    <title>Login Admin</title>
     <!-- Memuat Tailwind CSS melalui CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -40,7 +40,7 @@
 
         <!-- Judul Halaman -->
         <h2 class="mt-6 text-center text-3xl font-semibold text-[#2b3b4e]">
-            Log in to Portal
+            Login Admin
         </h2>
     </div>
 
@@ -99,11 +99,11 @@
             </form>
 
             <!-- Teks Sign up di bawah -->
-            <div class="mt-8 text-center text-sm text-[#7a8b9a]">
+            {{-- <div class="mt-8 text-center text-sm text-[#7a8b9a]">
                 <p>
                     No Account? Sign up <a href="#" class="font-medium text-brand-green hover:underline hover:text-green-700 transition duration-150">here</a>.
                 </p>
-            </div>
+            </div> --}}
             
         </div>
     </div>

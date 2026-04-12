@@ -31,7 +31,11 @@
 
                         <div class="relative animate-float lg:block hidden">
                             <div class="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full"></div>
-                            <img src="https://images.unsplash.com/photo-1558981403-c5f9899a289f?auto=format&fit=crop&w=800&q=80" alt="Motorcycle" class="relative z-10 w-full rounded-2xl shadow-2xl border border-slate-800 object-cover h-[500px]" />
+                            <img 
+                                src="{{ isset($motor) && $motor && $motor->foto1 ? asset('storage/' . $motor->foto1) : 'https://images.unsplash.com/photo-1558981403-c5f9899a289f?auto=format&fit=crop&w=800&q=80' }}" 
+                                alt="{{ isset($motor) && $motor ? $motor->nama_motor : 'Motorcycle' }}" 
+                                class="relative z-10 w-full rounded-2xl shadow-2xl border border-slate-800 object-cover h-[500px]" 
+                            />
                             <div class="absolute -bottom-6 -left-6 glass-panel p-4 rounded-xl flex items-center space-x-4 z-20 animate-fade-in-up delay-200">
                                 <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
                                     <i class="fa-solid fa-shield-halved text-green-400 text-xl"></i>
