@@ -136,6 +136,10 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 	Route::get('/', [AdminController::class, 'index'])->name('be.admin.index');
 	Route::get('/users', [UserbeController::class, 'index'])->name('be.admin.users');
 	Route::get('/jenismotor', [JenisMotorController::class, 'index'])->name('be.admin.jenismotor');
+	Route::post('/jenismotor', [JenisMotorController::class, 'store'])->name('be.admin.jenismotor.store');
+	Route::get('/jenismotor/{id}/edit', [JenisMotorController::class, 'edit'])->name('be.admin.jenismotor.edit');
+	Route::put('/jenismotor/{id}', [JenisMotorController::class, 'update'])->name('be.admin.jenismotor.update');
+	Route::delete('/jenismotor/{id}', [JenisMotorController::class, 'destroy'])->name('be.admin.jenismotor.destroy');
 	Route::get('/motor', [MotorController::class, 'index'])->name('be.admin.motor');
 	Route::get('/pelanggan', [PelangganController::class, 'index'])->name('be.admin.pelanggan');
 	Route::get('/metodebayar', [MetodeBayarController::class, 'index'])->name('be.admin.metodebayar');
