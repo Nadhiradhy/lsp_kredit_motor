@@ -102,7 +102,7 @@
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link" href="{{ route('jeniscicilan.index') }}">
-                        <span class="nav-icon"></span>
+                        <span class="nav-icon">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
@@ -114,7 +114,7 @@
                                 <circle cx="3.5" cy="10.5" r=".5" />
                             </svg>
                         </span>
-                        <span class="nav-link-text">Jenis Cicilan</span>
+                        <span class="nav-link-text">Jenis Cicilan Management</span>
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
                 <li class="nav-item">
