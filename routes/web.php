@@ -40,11 +40,6 @@ use App\Http\Controllers\JenisMotorController;
 
 
 
-// --- IMPORT CONTROLLER (Sesuaikan Path Folder) ---
-use App\Http\Controllers\auth\fe\LoginController;
-
-
-
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -52,8 +47,11 @@ use App\Http\Controllers\auth\fe\LoginController;
 
 // --- ROUTE AUTHENTICATION ---
 
+use App\Http\Controllers\auth\fe\LoginController;
+// Tampilkan form login
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.process');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.create_account');

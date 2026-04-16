@@ -36,7 +36,7 @@ public function register(Request $request)
 
     // Hash password
     $validated['katakunci'] = bcrypt($validated['katakunci']);
-    unset($validated['katakunci']);
+    // unset($validated['katakunci']);
 
     // Handle foto
     if ($request->hasFile('foto')) {

@@ -20,10 +20,24 @@
             </div>
 
             <!-- Auth Actions -->
-            <div id="nav-guest-actions" class="flex items-center space-x-4">
-                <a href="{{ route('login') }}" class="px-4 py-2 text-blue-400 hover:text-blue-300">Masuk</a>
-                <a href="{{ route('register') }}" class="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-500">Daftar</a>
-            </div>
+            @if(session('pelanggan_id'))
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm bg-blue-500/20 px-3 py-1 rounded-full">
+                        <i class="fa-solid fa-user"></i> Pelanggan
+                    </span>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="px-4 py-2 bg-red-600/20 text-red-400 rounded-lg hover:bg-red-600/30">
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            @else
+                <div class="flex items-center space-x-4">
+                    <a href="{{ route('login') }}" class="px-4 py-2 text-blue-400 hover:text-blue-300">Masuk</a>
+                    <a href="{{ route('register.create_account') }}" class="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-500">Daftar</a>
+                </div>
+            @endif
 
             <div id="nav-user-actions" class="hidden flex items-center space-x-4">
                 <span class="text-sm bg-blue-500/20 px-3 py-1 rounded-full">

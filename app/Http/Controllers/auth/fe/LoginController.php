@@ -4,6 +4,7 @@ namespace App\Http\Controllers\auth\fe;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Pelanggan;
 
 class LoginController extends Controller
 {
@@ -19,12 +20,19 @@ class LoginController extends Controller
             'katakunci' => 'required|string',
         ]);
 
-        // Attempt login with custom guard and custom password field
-        if (\Auth::guard('pelanggan')->attempt(['email' => $credentials['email'], 'katakunci' => $credentials['katakunci']])) {
-            // Authenticated as pelanggan
-            return redirect()->intended(route('home'))->with('success', 'Login berhasil!');
+        $pelanggan = Pelanggan::where('email', $credentials['email'])->first();
+
+        if ($pelanggan && \Hash::check($credentials['katakunci'], $pelanggan->katakunci)) {
+            session(['pelanggan_id' => $pelanggan->id]);
+            return redirect()->route('home')->with('success', 'Login berhasil!');
         }
 
-        return back()->withErrors(['email' => 'Email atau kata sandi salah.'])->withInput();
+        return back()->withErrors(['email' => 'Email atau kata sandi salah'])->withInput();
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->forget('pelanggan_id');
+        return redirect()->route('login')->with('success', 'Berhasil logout.');
     }
 }
